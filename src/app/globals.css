@@ -25,9 +25,20 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+body, html {
+  height: 100%;
+}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.leaflet-container{
+  position: relative;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
