@@ -23,7 +23,7 @@ export default function LocalPositionMap() {
         if (map && latitude && longitude) {
             map.flyTo([latitude, longitude], 13);
         }
-    }, [latitude, longitude]);
+    }, [map, latitude, longitude]);
 
     return latitude && longitude ? <LeafletMap position={[latitude, longitude]} zoom={13} whenCreated={setMap} /> : <p>Obtenint coordenades...</p>
 

@@ -35,7 +35,7 @@ const GeoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         const interval = setInterval(getCoords, 10000);
         getCoords()
         return () => clearInterval(interval);
-    }, []);
+    }, [getCoords]);
 
     return (
         <GeoContext.Provider value={{ latitude, longitude }}>
