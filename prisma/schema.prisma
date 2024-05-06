@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model report {
+  id             String         @id(map: "report_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  client_id      String?        @db.Uuid
+  site_event_id  String?        @db.Uuid
+  created_at     DateTime       @default(now()) @db.Timestamp(6)
+  updated_at     DateTime?      @db.Timestamp(6)
+  archived_at    DateTime?      @db.Timestamp(6)
+  status_id      String?        @db.Uuid
+  site_tenant_id String         @db.Uuid
+  latitude       Decimal        @db.Decimal
+  longitude      Decimal        @db.Decimal
+  report_status  report_status? @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_report_status_id_fk")
+  site_events    site_event?    @relation(fields: [site_event_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_events_id_fk")
+  site_tenant    site_tenant    @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+}
+
+model report_attachment {
+  id         String    @id(map: "report_attachment_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  report_id  Int
+  route      String    @db.VarChar
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model report_status {
+  id     String   @id(map: "report_status_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name   String   @db.VarChar
+  color  String?  @db.VarChar
+  code   String   @db.VarChar
+  report report[]
+}
+
+model site_tenant {
+  id                String       @id(map: "site_tenant_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name              String       @db.VarChar
+  initial_latitude  Decimal?     @db.Decimal
+  initial_longitude Decimal?     @db.Decimal
+  initial_zoom      Int?
+  hour_opening      DateTime?    @db.Time(6)
+  hour_closing      DateTime?    @db.Time(6)
+  created_at        DateTime     @default(now()) @db.Timestamp(6)
+  disabled_at       DateTime?    @db.Timestamp(6)
+  code              String       @unique(map: "site_tenant_pk_2") @db.VarChar
+  client            client[]
+  report            report[]
+  site_event        site_event[]
+}
+
+model client {
+  id             String      @id(map: "clients_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  external_id    String      @unique(map: "clients_pk_2") @db.VarChar
+  created_at     DateTime    @default(now()) @db.Timestamp(6)
+  site_tenant_id String      @db.Uuid
+  last_access    DateTime    @default(now()) @db.Timestamp(6)
+  site_tenant    site_tenant @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model site_event {
+  id             String      @id(map: "site_event_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name           String      @unique(map: "site_event_pk_2") @db.VarChar
+  icon           String      @db.VarChar
+  created_at     DateTime    @default(now()) @db.Timestamp(6)
+  site_tenant_id String      @db.Uuid
+  code           String      @db.VarChar
+  report         report[]
+  site_tenant    site_tenant @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+}
