@@ -41,6 +41,7 @@ const TenantProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
         }
     }, [tenantQuery.data])
 
+    if (tenantQuery.status === 'fulfilled' && !tenantQuery.data) throw new Error('Tenant not found')
     return (
         <TenantContext.Provider
             value={{
