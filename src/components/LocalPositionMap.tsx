@@ -3,6 +3,7 @@ import { GeoContext } from "@src/contexts/GeoContext";
 import { Map } from "leaflet";
 import { useContext, useEffect, useState } from "react";
 import { useMap, Marker, Popup } from 'react-leaflet';
+import Spinner from '@src/components/Spinner';
 
 type LocalPointerProps = {
     latitude: number;
@@ -32,6 +33,9 @@ export default function LocalPositionMap() {
 
     return latitude && longitude ? <DynamicMap position={[latitude, longitude]} zoom={13} >
         <LocalPointer latitude={latitude} longitude={longitude} />
-    </DynamicMap> : <p>Obtenint coordenades...</p>
+    </DynamicMap> : <div className='flex w-full items-center justify-center border-solid border-4 py-4 gap-3 h-full'>
+        <Spinner />
+        <p>Obtenint coordenades</p>
+    </div>
 
 }

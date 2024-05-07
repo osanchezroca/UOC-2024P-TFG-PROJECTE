@@ -3,6 +3,7 @@ import { publicAPI } from '../public-api'
 const extendedAPI = publicAPI.injectEndpoints({
   endpoints: (builder) => ({
     authClient: builder.mutation<any, string | null>({
+      invalidatesTags: ['Client'],
       query: (externalId) => ({
         url: `public/auth`,
         method: 'POST',

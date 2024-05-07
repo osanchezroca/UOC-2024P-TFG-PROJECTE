@@ -2,7 +2,7 @@ import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
 import { ReactNode } from "react"
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
+import { MapContainer, TileLayer } from "react-leaflet"
 
 export type MapProps = {
     position: [number, number],

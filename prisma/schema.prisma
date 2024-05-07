@@ -36,7 +36,7 @@ model report_status {
   id     String   @id(map: "report_status_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name   String   @db.VarChar
   color  String?  @db.VarChar
-  code   String   @db.VarChar
+  code   String   @unique(map: "report_status_pk_2") @db.VarChar
   report report[]
 }
 
@@ -64,6 +64,8 @@ model client {
   site_tenant_id String      @db.Uuid
   last_access    DateTime    @default(now()) @db.Timestamp(6)
   site_tenant    site_tenant @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+
+  @@unique([external_id, site_tenant_id], map: "client_pk")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments

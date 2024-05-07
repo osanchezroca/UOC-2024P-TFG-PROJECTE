@@ -5,11 +5,11 @@ import { Prisma } from "@src/libraries/database"
  * @param tenant 
  * @returns 
  */
-export const getTenant = async (tenant: string) => {
+export const getTenant = async (site_tenant_id: string) => {
     const database = Prisma
     return await database.site_tenant.findFirst({
         where: {
-            code: tenant
+            code: site_tenant_id
         }
     })
 }
