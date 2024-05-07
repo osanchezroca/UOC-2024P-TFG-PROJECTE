@@ -12,11 +12,12 @@ async function main() {
             create: {
                 name: "Default",
                 code: "default",
+                admin_key: 'demo',
                 initial_latitude: 41.087901921736474,
                 initial_longitude: 1.1574290679550567,
                 initial_zoom: 13,
                 hour_opening: hour_opening.toISOString(),
-                hour_closing: hour_closing.toISOString()
+                hour_closing: hour_closing.toISOString(),
             }
         })
         const site_events = await trx.site_event.createMany({

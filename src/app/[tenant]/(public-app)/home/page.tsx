@@ -1,8 +1,11 @@
 'use client'
+import Button from "@src/components/Button";
 import LocalPositionMap from "@src/components/LocalPositionMap";
-import Link from "next/link";
+import { TenantContext } from '@src/contexts/TenantContext';
+import { useContext } from 'react';
 
 export default function HomePage() {
+    const tenant = useContext(TenantContext);
     return (
         <>
             <div className="grow flex flex-col">
@@ -11,9 +14,9 @@ export default function HomePage() {
                 </div>
             </div>
             <div className="flex flex-col justify-center space-y-2 bg-slate-500 p-2">
-                <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href={'/reports/make'}>Make a report</Link>
-                <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href={'/reports'}>Log</Link>
-            </div>
+                <Button className="bg-orange-600 hover:bg-orange-700" href={`/${tenant.code}/reports/make`}>Make a report</Button>
+                <Button className="bg-orange-600 hover:bg-orange-700" href={`/${tenant.code}/reports`}>Log</Button >
+            </div >
         </>
     );
 }

@@ -21,6 +21,7 @@
     "@headlessui/react": "^2.0.0",
     "@prisma/client": "^5.13.0",
     "@reduxjs/toolkit": "^2.2.3",
+    "formik": "^2.4.6",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "14.1.4",

@@ -1,5 +1,6 @@
 'use client'
 import Button from '@src/components/Button'
+import CardComponent from '@src/components/CardComponent'
 
 export default function Error({
     error,
@@ -10,13 +11,13 @@ export default function Error({
 }) {
     return (
         <div className='flex flex-col h-full w-full justify-center items-center'>
-            <div className='bg-slate-100 rounded-md p-3 border border-black border-solid flex flex-col jusitfy-stretch'>
+            <CardComponent>
                 <h2>Ha ocorregut un error amb l'aplicació:</h2>
                 <pre>{error.message}</pre>
                 <Button onClick={() => reset()}>
                     Reiniciar aplicació
                 </Button>
-            </div>
+            </CardComponent>
         </div>
     )
 }

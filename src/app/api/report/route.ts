@@ -1,9 +1,15 @@
-import { getTenantFromPathname } from "@src/libraries/tenant-detect"
+import { getTenantFromPathname } from "@src/modules/site-tenant/tenant-detect"
 import { getReports } from "@src/modules/report/report-services"
 
 export async function GET(request: Request) {
-    const tenant = await getTenantFromPathname(request)
-    console.log(tenant)
-    const reports = await getReports(tenant.id)
-    return Response.json(reports)
+    try {
+        const tenant = await getTenantFromPathname(request)
+        console.log(tenant)
+        const reports = await getReports(tenant.id)
+        return Response.json(reports)
+    } catch (e: any) {
+        return new Response(`${e.message}`, {
+            status: 500,
+        })
+    }
 }

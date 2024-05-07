@@ -16,9 +16,9 @@ export default function Dashboard() {
   }), [])
   const [map, setMap] = useState<Map>();
 
-  const latitude = tenant.initial_latitude
-  const longitude = tenant.initial_longitude
-  const zoom = tenant.initial_zoom
+  const latitude = tenant.initialLatitude
+  const longitude = tenant.initialLongitude
+  const zoom = tenant.initialZoom
 
   return (
     <div className="h-full">

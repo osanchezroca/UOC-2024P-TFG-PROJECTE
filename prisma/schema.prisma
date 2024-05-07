@@ -22,6 +22,7 @@ model report {
   report_status  report_status? @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_report_status_id_fk")
   site_events    site_event?    @relation(fields: [site_event_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_events_id_fk")
   site_tenant    site_tenant    @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+  report_log     report_log[]
 }
 
 model report_attachment {
@@ -50,6 +51,7 @@ model site_tenant {
   created_at        DateTime     @default(now()) @db.Timestamp(6)
   disabled_at       DateTime?    @db.Timestamp(6)
   code              String       @unique(map: "site_tenant_pk_2") @db.VarChar
+  admin_key         String?      @db.VarChar
   client            client[]
   report            report[]
   site_event        site_event[]
@@ -74,4 +76,12 @@ model site_event {
   code           String      @db.VarChar
   report         report[]
   site_tenant    site_tenant @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+}
+
+model report_log {
+  id         String   @id(map: "report_log_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  report_id  String   @db.Uuid
+  message    String
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  report     report   @relation(fields: [report_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_log_report_id_fk")
 }
