@@ -11,7 +11,7 @@ export default function MenuAppBar() {
         <div className="flex justify-between items-center bg-slate-700 px-3">
             <p className="text-slate-200 text-2xl py-3">{tenant.name}</p>
             <div>
-                <Link href={`/${tenant.code}/home`} className="text-slate-300 hover:text-slate-500"><FontAwesomeIcon icon={faHome} /></Link>
+                <Link href={`/${tenant.code}`} className="text-slate-300 hover:text-slate-500"><FontAwesomeIcon icon={faHome} /></Link>
             </div>
         </div>
     );

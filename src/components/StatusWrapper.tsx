@@ -7,7 +7,8 @@ type Props = {
 };
 /**
  * Function that check if status is loaded or has an error
- * @param param0 
+ * @param query
+ * @param children
  * @returns 
  */
 export default function StatusWrapper({ query, children }: Props) {

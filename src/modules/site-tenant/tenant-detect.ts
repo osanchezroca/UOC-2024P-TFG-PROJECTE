@@ -1,7 +1,7 @@
 import { getTenant } from "@src/modules/site-tenant/site-tenant-services"
 
 /**
- * This function gets the tenant from the pathname of the referer
+ * This function gets the tenant from the pathname of the referer and client_id, if exist
  * @param request 
  * @param returnKey
  * @returns 
@@ -11,6 +11,7 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
     const referer = request.headers.get('referer')
     if (!referer) throw new Error('Referer not found')
 
+    //Retrieve tenant
     // From referer, get pathname
     const pathname = new URL(referer).pathname
 
@@ -22,18 +23,8 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
     // If tenant is not found, throw an error
     if (!tenant) throw new Error('Tenant not found')
 
-    // If returnKey is false, return tenant without admin_key
-    if (!returnKey) return Object.assign({}, tenant, { admin_key: undefined })
-    return tenant
-}
 
-/**
- * This function checks if the admin key is correct
- * @param request 
- * @param admin_key 
- * @returns 
- */
-export const checkAdminKey = (request: Request, admin_key: string): boolean => {
-    const adminKey = request.headers.get('admin-key')
-    return adminKey === admin_key
+    // If returnKey is false, return tenant without admin_key
+    return Object.assign({}, tenant, !returnKey ? { admin_key: undefined } : {})
+
 }

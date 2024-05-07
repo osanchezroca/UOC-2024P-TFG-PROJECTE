@@ -1,20 +1,24 @@
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
+import { ReactNode } from "react"
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 
-export default function LeafletMap(props: any) {
-    const { position, zoom, whenReady = () => null } = props
+export type MapProps = {
+    position: [number, number],
+    zoom: number,
+    children?: ReactNode,
+    scrollWheelZoom?: boolean,
+    dragging?: boolean,
+    zoomControl?: boolean
+}
 
-    return <MapContainer center={position} zoom={zoom} scrollWheelZoom={true} whenReady={whenReady}>
+export default function LeafletMap({ position, zoom, children, scrollWheelZoom = true, dragging = true, zoomControl = true }: MapProps) {
+    return <MapContainer center={position} zoom={zoom} scrollWheelZoom={scrollWheelZoom} dragging={dragging} zoomControl={zoomControl}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
-            <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-        </Marker>
+        {children}
     </MapContainer>
 }

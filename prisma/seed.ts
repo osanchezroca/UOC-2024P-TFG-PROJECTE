@@ -24,37 +24,37 @@ async function main() {
             data: [
                 {
                     name: "Jardineria",
-                    icon: "tree",
+                    icon: "☘️",
                     code: "jardineria",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Neteja",
-                    icon: "broom",
+                    icon: "🧹",
                     code: "neteja",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Mobilitat",
-                    icon: "bus",
+                    icon: "🚂",
                     code: "mobilitat",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Seguretat",
-                    icon: "shieldAlt",
+                    icon: "🛡️",
                     code: "seguretat",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Il·luminació",
-                    icon: "lightbulb",
+                    icon: "💡",
                     code: "il-luminacio",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Altres",
-                    icon: "question",
+                    icon: "❓",
                     code: "altres",
                     site_tenant_id: site_tenant.id
                 }
@@ -65,22 +65,22 @@ async function main() {
                 {
                     name: "Entrant",
                     code: "incoming",
-                    color: "blue",
+                    color: "#d9d9d9",
                 },
                 {
                     name: "Llegit",
                     code: "read",
-                    color: "gray",
+                    color: "#377ae6",
                 },
                 {
                     name: "Actuat",
                     code: "act",
-                    color: "green",
+                    color: "#37e660",
                 },
                 {
                     name: "Rebutjat",
                     code: "rejected",
-                    color: "red",
+                    color: "#e63737",
                 }
             ]
         })

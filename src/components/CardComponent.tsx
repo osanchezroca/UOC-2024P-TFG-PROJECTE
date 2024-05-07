@@ -7,7 +7,7 @@ type Props = {
  * @returns 
  */
 export default function CardComponent({ children }: Props) {
-    return <div className='bg-slate-100 rounded-md p-3 border border-black border-solid flex flex-col jusitfy-stretch gap-2'>
+    return <div className='bg-slate-100 rounded-md p-3 border border-black border-solid flex flex-col jusitfy-stretch gap-2 max-w-full'>
         {children}
     </div>
 }

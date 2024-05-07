@@ -5,6 +5,7 @@ import LocalPositionMap from "@src/components/LocalPositionMap";
 import { GeoContext } from "@src/contexts/GeoContext";
 import Link from "next/link";
 import { useContext } from "react";
+import Heading from '@src/components/Heading';
 
 export default function HomePage() {
     const { latitude, longitude } = useContext(GeoContext);
@@ -21,7 +22,7 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col justify-center space-y-2 bg-slate-200 p-2">
                 <p>Latitude: {latitude || '...'} Longitude: {longitude || '...'}</p>
-                <p className='uppercase font-mono'>Esdeveniment</p>
+                <Heading>Esdeveniment</Heading>
                 <div className="grid grid-cols-4 gap-3">
                     <div className="flex flex-col items-center bg-slate-300 rounded-lg border-solid border-2 border-slate-400 py-3">
                         <FontAwesomeIcon icon={faTree} />
@@ -32,7 +33,7 @@ export default function HomePage() {
                         <p>Foc</p>
                     </div>
                 </div>
-                <p className='uppercase font-mono'>Recursos</p>
+                <Heading>Recursos</Heading>
                 <div className="flex items-baseline space-x-3 bg-slate-300 rounded-lg border-dashed border-4 border-slate-400 p-3">
                     <FontAwesomeIcon icon={faFile} size="lg" />
                     <p>FILE FROP ZONE</p>

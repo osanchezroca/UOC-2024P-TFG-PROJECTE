@@ -1,15 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// Define a service using a base URL and expected endpoints
+/**
+ * Public API
+ */
 export const publicAPI = createApi({
   reducerPath: 'publicAPI',
   baseQuery: fetchBaseQuery({
     baseUrl: '/api/',
     prepareHeaders: (headers, { getState }) => {
-      //add to header localstorage admin_key if exist
+      //add admin-key to header if exist
       const adminKey = localStorage.getItem('admin-key')
       if (adminKey) {
         headers.set('admin-key', adminKey)
+      }
+      //add clientId to header if exist
+      const clientId = localStorage.getItem('clientId')
+      if (clientId) {
+        headers.set('client-id', clientId)
       }
       return headers
     },

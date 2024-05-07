@@ -13,7 +13,7 @@ export default function Error({
         <div className='flex flex-col h-full w-full justify-center items-center'>
             <CardComponent>
                 <h2>Ha ocorregut un error amb l'aplicació:</h2>
-                <pre>{error.message}</pre>
+                <pre className='break-words overflow-auto'>{error.message}</pre>
                 <Button onClick={() => reset()}>
                     Reiniciar aplicació
                 </Button>

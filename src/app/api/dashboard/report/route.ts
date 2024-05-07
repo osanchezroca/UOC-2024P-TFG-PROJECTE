@@ -4,7 +4,6 @@ import { getReports } from "@src/modules/report/report-services"
 export async function GET(request: Request) {
     try {
         const tenant = await getTenantFromPathname(request)
-        console.log(tenant)
         const reports = await getReports(tenant.id)
         return Response.json(reports)
     } catch (e: any) {
