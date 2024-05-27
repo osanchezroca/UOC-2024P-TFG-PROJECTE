@@ -1,6 +1,6 @@
 import { getClientFromHeader } from '@src/modules/client/client-services';
 import { getPublicReport } from "@src/modules/report/report-services";
-import { getTenantFromPathname } from "@src/modules/site-tenant/tenant-detect";
+import { getTenantFromPathname } from "@src/modules/site-tenant/site-tenant-services";
 type Params = {
     params: {
         report_id: string

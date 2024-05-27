@@ -1,5 +1,5 @@
 import { getEvents } from "@src/modules/site-event/site-event-services";
-import { getTenantFromPathname } from "@src/modules/site-tenant/tenant-detect";
+import { getTenantFromPathname } from "@src/modules/site-tenant/site-tenant-services";
 
 export async function GET(request: Request) {
     try {

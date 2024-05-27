@@ -1,4 +1,4 @@
-import { getTenantFromPathname } from "@src/modules/site-tenant/tenant-detect"
+import { getTenantFromPathname } from "@src/modules/site-tenant/site-tenant-services"
 import { getReports } from "@src/modules/report/report-services"
 
 export async function GET(request: Request) {

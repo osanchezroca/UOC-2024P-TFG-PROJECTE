@@ -1,5 +1,5 @@
 import { createReport, getPublicReports } from '@src/modules/report/report-services';
-import { getTenantFromPathname } from "@src/modules/site-tenant/tenant-detect";
+import { getTenantFromPathname } from "@src/modules/site-tenant/site-tenant-services";
 import { getClientFromHeader } from '@src/modules/client/client-services';
 
 export async function GET(request: Request) {
