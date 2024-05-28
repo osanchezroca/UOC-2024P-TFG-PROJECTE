@@ -4,9 +4,9 @@ import Button from "@src/components/Button"
 import Heading from '@src/components/Heading';
 
 type Props = {
-    item: any
+    report_id: any
 }
-export default function ReportAttachments({ item }: Props) {
+export default function ReportAttachments({ report_id }: Props) {
 
     const attachments = [
         { name: 'Document 1', url: 'https://www.google.com' },

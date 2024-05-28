@@ -2,12 +2,13 @@ import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
 import { ReactNode } from "react"
+import * as Leaflet from "react-leaflet"
 import { MapContainer, TileLayer } from "react-leaflet"
 
 export type MapProps = {
     position: [number, number],
     zoom: number,
-    children?: ReactNode,
+    children?: (l) => ReactNode,
     scrollWheelZoom?: boolean,
     dragging?: boolean,
     zoomControl?: boolean
@@ -19,6 +20,6 @@ export default function LeafletMap({ position, zoom, children, scrollWheelZoom =
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {children}
+        {children(Leaflet)}
     </MapContainer>
 }

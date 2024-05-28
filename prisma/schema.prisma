@@ -17,8 +17,8 @@ model report {
   archived_at    DateTime?      @db.Timestamp(6)
   status_id      String?        @db.Uuid
   site_tenant_id String         @db.Uuid
-  latitude       Decimal        @db.Decimal
-  longitude      Decimal        @db.Decimal
+  latitude       Float
+  longitude      Float
   report_status  report_status? @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_report_status_id_fk")
   site_events    site_event?    @relation(fields: [site_event_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_events_id_fk")
   site_tenant    site_tenant    @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")

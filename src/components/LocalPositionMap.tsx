@@ -1,16 +1,16 @@
 import DynamicMap from '@src/components/DynamicMap';
-import { GeoContext } from "@src/contexts/GeoContext";
-import { Map } from "leaflet";
-import { useContext, useEffect, useState } from "react";
-import { useMap, Marker, Popup } from 'react-leaflet';
 import Spinner from '@src/components/Spinner';
+import { GeoContext } from "@src/contexts/GeoContext";
+import { ReactNode, useContext, useEffect } from "react";
+import { useMap } from 'react-leaflet';
 
 type LocalPointerProps = {
-    latitude: number;
-    longitude: number;
-    flyTo?: boolean;
+    latitude: number
+    longitude: number
+    flyTo?: boolean
+    children?: ReactNode
 }
-function LocalPointer({ latitude, longitude, flyTo = false }: LocalPointerProps) {
+function LocalPointer({ children, latitude, longitude, flyTo = false }: LocalPointerProps) {
     const map = useMap();
     //move map pointer to current geo position
     useEffect(() => {
@@ -20,11 +20,7 @@ function LocalPointer({ latitude, longitude, flyTo = false }: LocalPointerProps)
             }
         }
     }, [map, latitude, longitude]);
-    return <Marker position={[latitude, longitude]}>
-        <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-    </Marker>
+    return children
 }
 
 export default function LocalPositionMap() {
@@ -32,7 +28,13 @@ export default function LocalPositionMap() {
     const { latitude, longitude } = useContext(GeoContext);
 
     return latitude && longitude ? <DynamicMap position={[latitude, longitude]} zoom={13} >
-        <LocalPointer latitude={latitude} longitude={longitude} />
+        {({ Marker, Popup }) => <LocalPointer latitude={latitude} longitude={longitude}>
+            <Marker position={[latitude, longitude]}>
+                <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+            </Marker>
+        </LocalPointer>}
     </DynamicMap> : <div className='flex w-full items-center justify-center border-solid border-4 py-4 gap-3 h-full'>
         <Spinner />
         <p>Obtenint coordenades</p>

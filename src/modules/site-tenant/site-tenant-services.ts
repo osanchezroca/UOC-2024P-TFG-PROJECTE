@@ -37,9 +37,10 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
     // If tenant is not found, throw an error
     if (!tenant) throw new Error('Tenant not found')
 
-
+    // Check if admin key exist on tenant and if match with supposed admin key in header
+    const isAdmin = tenant.admin_key ? checkAdminKey(request, tenant.admin_key) : false
     // If returnKey is false, return tenant without admin_key
-    return Object.assign({}, tenant, !returnKey ? { admin_key: undefined } : {})
+    return Object.assign({}, tenant, !returnKey ? { admin_key: undefined, isAdmin } : {})
 
 }
 
@@ -51,5 +52,5 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
  */
 export const checkAdminKey = (request: Request, admin_key: string): boolean => {
     const adminKey = request.headers.get('admin-key')
-    return adminKey === admin_key
+    return String(adminKey) == String(admin_key)
 }

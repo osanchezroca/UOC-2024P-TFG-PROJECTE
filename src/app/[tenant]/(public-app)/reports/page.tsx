@@ -16,7 +16,7 @@ export default function ReportsPage() {
             <div className="flex flex-col gap-2 p-2">
                 {reports && reports.length ? reports.map((item: any) => (
                     <Link href={`/${tenant.code}/reports/${item.id}`} key={item.id}>
-                        <ReportItem item={item} size='md' />
+                        <ReportItem item={item} />
                     </Link>
                 )) : <p>Encara no hi ha cap esdeveniment informat</p>}
             </div>

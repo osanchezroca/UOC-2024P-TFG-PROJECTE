@@ -1,5 +1,5 @@
 import StatusWrapper from '@src/components/StatusWrapper';
-import { useGetTenantQuery } from '@src/libraries/endpoints/tenant';
+import { useGetTenantQuery } from '@src/libraries/endpoints/site';
 import React, { createContext, useEffect, useState } from 'react';
 
 interface TenantContextProps {

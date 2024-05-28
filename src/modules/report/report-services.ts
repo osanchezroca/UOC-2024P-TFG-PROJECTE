@@ -1,12 +1,12 @@
-import { Prisma } from "@src/libraries/database"
-import { connect } from "http2"
+import { Prisma } from "@src/libraries/database";
 
 export const getReports = async (site_tenant_id: string) => {
     const database = Prisma
     return await database.report.findMany({
         include: {
             report_status: true,
-            site_events: true
+            site_events: true,
+            report_log: true
         },
         where: {
             site_tenant_id: site_tenant_id
@@ -39,6 +39,20 @@ export const getPublicReport = async (site_tenant_id: string, client_id: string,
         where: {
             site_tenant_id: site_tenant_id,
             client_id: client_id,
+            id: report_id
+        }
+    })
+}
+
+export const getReport = async (site_tenant_id: string, report_id: string,) => {
+    const database = Prisma
+    return await database.report.findFirst({
+        include: {
+            report_status: true,
+            site_events: true
+        },
+        where: {
+            site_tenant_id: site_tenant_id,
             id: report_id
         }
     })
