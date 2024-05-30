@@ -1,0 +1,7 @@
+Plataforma de reportatge d’esdeveniments en base a la geolocalització (c) by Oscar Sánchez Roca osharo(at)uoc.edu
+
+Plataforma de reportatge d’esdeveniments en base a la geolocalització is licensed under a
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+You should have received a copy of the license along with this
+work. If not, see <https://creativecommons.org/licenses/by-nc-sa/4.0/>.
