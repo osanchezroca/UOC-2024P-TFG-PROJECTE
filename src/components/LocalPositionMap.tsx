@@ -3,6 +3,7 @@ import Spinner from '@src/components/Spinner';
 import { GeoContext } from "@src/contexts/GeoContext";
 import { ReactNode, useContext, useEffect } from "react";
 import { useMap } from 'react-leaflet';
+import { ErrorGeolocation } from './ErrorGeolocation';
 
 type LocalPointerProps = {
     latitude: number
@@ -24,9 +25,11 @@ function LocalPointer({ children, latitude, longitude, flyTo = false }: LocalPoi
 }
 
 export default function LocalPositionMap() {
-    //get current position from context
-    const { latitude, longitude } = useContext(GeoContext);
+    const { latitude, longitude, errorMessage } = useContext(GeoContext);
 
+    if (errorMessage) return <ErrorGeolocation error={errorMessage} />
+
+    //use current position from geoContext
     return latitude && longitude ? <DynamicMap position={[latitude, longitude]} zoom={13} >
         {({ Marker, Popup }) => <LocalPointer latitude={latitude} longitude={longitude}>
             <Marker position={[latitude, longitude]}>

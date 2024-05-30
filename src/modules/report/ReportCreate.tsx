@@ -42,9 +42,8 @@ export default function ReportCreate() {
         }, 1000);
         return () => clearInterval(interval);
     }, []);
-
-    return (
-        !routing && <div className="flex flex-col justify-center space-y-2 bg-slate-200 p-2">
+    return !routing && (latitude && longitude) ? (
+        <div className="flex flex-col justify-center space-y-2 bg-slate-200 p-2">
             <Formik
                 onSubmit={handleSubmit}
                 initialValues={{
@@ -69,5 +68,5 @@ export default function ReportCreate() {
                 </Form>
             </Formik>
         </div>
-    );
+    ) : null
 }

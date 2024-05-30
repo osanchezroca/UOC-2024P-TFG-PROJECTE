@@ -5,7 +5,10 @@ export default function Button(props: any) {
     if (props.size === 'sm') {
         className += ' py-1 px-2 text-sm'
     }
-    if (props.href) {
+    if (props.disabled) {
+        className += ' opacity-50 cursor-not-allowed'
+    }
+    if (!props.disabled && props.href) {
         return <Link {...props} className={className}>{props.children}</Link>
     } else {
         return <button {...props} className={className}>{props.children}</button>
