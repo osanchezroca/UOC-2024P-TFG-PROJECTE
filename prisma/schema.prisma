@@ -43,9 +43,9 @@ model report_status {
 model site_tenant {
   id                String       @id(map: "site_tenant_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name              String       @db.VarChar
-  initial_latitude  Decimal?     @db.Decimal
-  initial_longitude Decimal?     @db.Decimal
-  initial_zoom      Int?
+  initial_latitude  Float?
+  initial_longitude Float?
+  initial_zoom      Float?
   hour_opening      DateTime?    @db.Time(6)
   hour_closing      DateTime?    @db.Time(6)
   created_at        DateTime     @default(now()) @db.Timestamp(6)
@@ -75,7 +75,7 @@ model site_event {
   icon           String      @db.VarChar
   created_at     DateTime    @default(now()) @db.Timestamp(6)
   site_tenant_id String      @db.Uuid
-  code           String      @db.VarChar
+  deleted_at     DateTime?   @db.Timestamp(6)
   report         report[]
   site_tenant    site_tenant @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
 }

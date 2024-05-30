@@ -41,7 +41,7 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
     // Check if admin key exist on tenant and if match with supposed admin key in header
     const isAdmin = tenant.admin_key ? checkAdminKey(request, tenant.admin_key) : false
     // If returnKey is false, return tenant without admin_key
-    return Object.assign({}, tenant, !returnKey ? { admin_key: undefined, isAdmin } : {})
+    return Object.assign({}, tenant, !returnKey ? { admin_key: undefined } : { isAdmin })
 
 }
 
