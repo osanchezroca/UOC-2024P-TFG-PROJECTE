@@ -9,11 +9,16 @@ export default function PublicLayout({ children, }: Readonly<{ children: React.R
   //if localStorage clientId is not set, or is not in URL Query generate a new one
   const queryId = new URLSearchParams(window.location.search).get('clientId')
   const localStorageId = localStorage.getItem('clientId')
+  const localStorageAdmin = localStorage.getItem('admin-key')
   useEffect(() => {
     if (!localStorageId && queryId) {
       localStorage.setItem('clientId', queryId)
     } else if (!localStorageId && !queryId) {
       localStorage.setItem('clientId', nanoid(4))
+    }
+    if (localStorageAdmin) {
+      localStorage.removeItem('admin-key')
+      window.location.reload()
     }
   }, [])
 
