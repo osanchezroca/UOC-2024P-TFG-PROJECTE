@@ -9,7 +9,9 @@ export default function Button(props: any) {
         className += ' opacity-50 cursor-not-allowed'
     }
     if (!props.disabled && props.href) {
-        return <Link {...props} className={className}>{props.children}</Link>
+        return <Link href={props.href} className="flex justify-stretch">
+            <button {...props} className={`grow ${className}`}>{props.children}</button>
+        </Link>
     } else {
         return <button {...props} className={className}>{props.children}</button>
     }
