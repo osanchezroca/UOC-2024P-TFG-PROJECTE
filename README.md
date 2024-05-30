@@ -165,6 +165,7 @@ This is an example of how to list things you need to use the software and how to
     - [ ] Check admin fence
     - [ ] Report propvided by known persons
 - [ ] Extra improvements:
+    - [ ] Create end-to-end test 
     - [ ] Use websockets to refresh live
     - [ ] Multi-language Support
         - [ ] Catalan
@@ -172,6 +173,7 @@ This is an example of how to list things you need to use the software and how to
         - [ ] English
         - [ ] French
     - [ ] Tenant management screen (CRUD)
+    - [ ] Map pointer use status color 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
