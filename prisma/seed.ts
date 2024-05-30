@@ -25,37 +25,31 @@ async function main() {
                 {
                     name: "Jardineria",
                     icon: "☘️",
-                    code: "jardineria",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Neteja",
                     icon: "🧹",
-                    code: "neteja",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Mobilitat",
                     icon: "🚂",
-                    code: "mobilitat",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Seguretat",
                     icon: "🛡️",
-                    code: "seguretat",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Il·luminació",
                     icon: "💡",
-                    code: "il-luminacio",
                     site_tenant_id: site_tenant.id
                 },
                 {
                     name: "Altres",
                     icon: "❓",
-                    code: "altres",
                     site_tenant_id: site_tenant.id
                 }
             ]
@@ -98,7 +92,7 @@ async function main() {
         if (!statusIncoming) throw new Error('Event incoming not found')
         const eventJardineria = await trx.site_event.findFirst({
             where: {
-                code: 'jardineria'
+                name: 'Jardineria'
             }
         })
         if (!eventJardineria) throw new Error('Event jardineria not found')
