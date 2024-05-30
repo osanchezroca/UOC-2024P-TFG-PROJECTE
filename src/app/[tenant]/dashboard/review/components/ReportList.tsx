@@ -1,7 +1,7 @@
 'use client'
 import StatusWrapper from "@src/components/StatusWrapper";
 import { TenantContext } from '@src/contexts/TenantContext';
-import { useGetDashboardReportsQuery } from "@src/libraries/endpoints/report";
+import { useGetReportsQuery } from "@src/libraries/endpoints/report";
 import { usePathname, useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 import BarItemReport from "../[report_id]/components/BarItemReport";
@@ -13,7 +13,7 @@ export default function ReportList() {
     const pathname = usePathname()
     const report_id = pathname.split('/').pop() || null
 
-    const reportsQuery = useGetDashboardReportsQuery()
+    const reportsQuery = useGetReportsQuery()
     const data = reportsQuery.data
 
     const [showArchived, setShowArchived] = useState<boolean>(false)

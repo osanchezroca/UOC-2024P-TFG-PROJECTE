@@ -3,7 +3,7 @@
 import DynamicMap from '@src/components/DynamicMap';
 import StatusWrapper from "@src/components/StatusWrapper";
 import { TenantContext } from '@src/contexts/TenantContext';
-import { useGetPublicReportQuery } from "@src/libraries/endpoints/report";
+import { useGetReportQuery } from "@src/libraries/endpoints/report";
 import ReportAttachments from '@src/modules/report/ReportAttachments';
 import ReportItem from '@src/modules/report/ReportItem';
 import { useContext } from 'react';
@@ -16,7 +16,7 @@ type Props = {
 
 export default function ReportPage({ params: { report_id } }: Props) {
     const tenant = useContext(TenantContext);
-    const reportQuery = useGetPublicReportQuery(report_id);
+    const reportQuery = useGetReportQuery(report_id);
     const report = reportQuery.data;
 
     return (

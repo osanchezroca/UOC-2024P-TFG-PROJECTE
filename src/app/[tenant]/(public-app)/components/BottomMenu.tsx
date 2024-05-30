@@ -2,11 +2,11 @@
 import Button from "@src/components/Button";
 import StatusWrapper from "@src/components/StatusWrapper";
 import { TenantContext } from '@src/contexts/TenantContext';
-import { useGetPublicReportsQuery } from "@src/libraries/endpoints/report";
+import { useGetReportsQuery } from "@src/libraries/endpoints/report";
 import { useContext } from 'react';
 
 export default function BottomMenu() {
-    const reportsQuery = useGetPublicReportsQuery()
+    const reportsQuery = useGetReportsQuery()
     const reports = reportsQuery.data
 
     const tenant = useContext(TenantContext);

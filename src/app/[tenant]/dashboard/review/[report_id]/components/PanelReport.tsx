@@ -3,7 +3,7 @@
 import Button from '@src/components/Button';
 import StatusWrapper from '@src/components/StatusWrapper';
 import SelectStatus from '@src/components/inputs/SelectStatus';
-import { useGetDashboardReportQuery, useUpdateReportMutation } from '@src/libraries/endpoints/report';
+import { useGetReportQuery, useUpdateReportMutation } from '@src/libraries/endpoints/report';
 import ReportAttachments from '@src/modules/report/ReportAttachments';
 import LogList from '@src/modules/report/log/LogList';
 import PanelInfo from './PanelInfo';
@@ -13,7 +13,7 @@ type Props = {
 }
 export default function PanelReport({ report_id }: Props) {
 
-    const reportQuery = useGetDashboardReportQuery(report_id);
+    const reportQuery = useGetReportQuery(report_id);
     const report = reportQuery.data;
 
     const [updateReport, updateReportQuery] = useUpdateReportMutation()

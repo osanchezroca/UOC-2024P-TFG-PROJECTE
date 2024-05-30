@@ -3,34 +3,26 @@ import { publicAPI } from '../public-api'
 
 const extendedAPI = publicAPI.injectEndpoints({
   endpoints: (builder) => ({
-    getPublicReports: builder.query<ReportType[], void>({
+    getReports: builder.query<ReportType[], void>({
       providesTags: ['Report'],
-      query: () => `public/report`,
+      query: () => `report`,
     }),
-    getPublicReport: builder.query<ReportType, string>({
+    getReport: builder.query<ReportType, string>({
       providesTags: ['Report'],
-      query: (reportId) => `public/report/${reportId}`,
-    }),
-    getDashboardReports: builder.query<ReportType[], void>({
-      providesTags: ['Report'],
-      query: () => `dashboard/report`,
-    }),
-    getDashboardReport: builder.query<ReportType, string>({
-      providesTags: ['Report'],
-      query: (reportId) => `dashboard/report/${reportId}`,
+      query: (reportId) => `report/${reportId}`,
     }),
     getStatus: builder.query<any, void>({
       providesTags: ['SiteStatus'],
-      query: () => `dashboard/status`,
+      query: () => `status`,
     }),
     getReportLog: builder.query<ReportLogType[], string>({
       providesTags: ['ReportLog'],
-      query: (reportId) => `dashboard/report/${reportId}/log`,
+      query: (reportId) => `report/${reportId}/log`,
     }),
     createReport: builder.mutation<any, any>({
       invalidatesTags: ['Report'],
       query: (body) => ({
-        url: `public/report`,
+        url: `report`,
         method: 'POST',
         body,
       }),
@@ -38,7 +30,7 @@ const extendedAPI = publicAPI.injectEndpoints({
     createReportLog: builder.mutation<any, any>({
       invalidatesTags: ['ReportLog'],
       query: (body) => ({
-        url: `dashboard/report/${body.report_id}/log`,
+        url: `report/${body.report_id}/log`,
         method: 'POST',
         body,
       }),
@@ -46,7 +38,7 @@ const extendedAPI = publicAPI.injectEndpoints({
     updateReport: builder.mutation<any, any>({
       invalidatesTags: ['Report'],
       query: (body) => ({
-        url: `dashboard/report/${body.report_id}`,
+        url: `report/${body.report_id}`,
         method: 'PUT',
         body,
       }),
@@ -55,10 +47,8 @@ const extendedAPI = publicAPI.injectEndpoints({
 })
 
 export const {
-  useGetDashboardReportsQuery,
-  useGetDashboardReportQuery,
-  useGetPublicReportsQuery,
-  useGetPublicReportQuery,
+  useGetReportsQuery,
+  useGetReportQuery,
   useGetStatusQuery,
   useGetReportLogQuery,
   useCreateReportMutation,

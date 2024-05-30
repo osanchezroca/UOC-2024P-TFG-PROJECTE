@@ -1,15 +1,15 @@
 'use client'
 
 import StatusWrapper from "@src/components/StatusWrapper";
-import { useGetPublicReportsQuery } from "@src/libraries/endpoints/report";
+import { TenantContext } from '@src/contexts/TenantContext';
+import { useGetReportsQuery } from "@src/libraries/endpoints/report";
 import ReportItem from "@src/modules/report/ReportItem";
 import Link from "next/link";
-import { TenantContext } from '@src/contexts/TenantContext';
 import { useContext } from 'react';
 
 export default function ReportsPage() {
     const tenant = useContext(TenantContext);
-    const reportsQuery = useGetPublicReportsQuery();
+    const reportsQuery = useGetReportsQuery();
     const reports = reportsQuery.data;
     return (
         <StatusWrapper query={reportsQuery}>
