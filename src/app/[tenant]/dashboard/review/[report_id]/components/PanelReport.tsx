@@ -5,8 +5,8 @@ import StatusWrapper from '@src/components/StatusWrapper';
 import SelectStatus from '@src/components/inputs/SelectStatus';
 import { useGetDashboardReportQuery, useUpdateReportMutation } from '@src/libraries/endpoints/report';
 import ReportAttachments from '@src/modules/report/ReportAttachments';
-import ReportLog from '../../../../modules/report/log/LogList';
-import ReportInfo from './PanelInfo';
+import LogList from '@src/modules/report/log/LogList';
+import PanelInfo from './PanelInfo';
 
 type Props = {
     report_id: string
@@ -36,14 +36,14 @@ export default function PanelReport({ report_id }: Props) {
             {report &&
                 <div className='grid grid-cols-3 gap-2 w-full h-full'>
                     <div className='flex flex-col'>
-                        <ReportInfo item={report} />
+                        <PanelInfo item={report} />
                         <SelectStatus onChange={handleOnChangeStatus} selected={report.status_id} />
                         <Button onClick={handleOnArchive} isActive={report.archived_at}> {report.archived_at ? 'Desarxivar' : 'Arxivar'}</Button>
                     </div>
                     <div className='flex flex-col overflow-y-auto'>
                         <ReportAttachments report_id={report.id} />
                     </div>
-                    <ReportLog report_id={report.id} />
+                    <LogList report_id={report.id} />
                 </div>
             }
         </StatusWrapper >

@@ -1,9 +1,8 @@
-import { Input } from '@headlessui/react';
 import Button from '@src/components/Button';
 import CardComponent from '@src/components/CardComponent';
 import { TenantContext } from '@src/contexts/TenantContext';
 import { Field, Form, Formik } from 'formik';
-import React, { useContext, useEffect, useState } from 'react';
+import { ReactNode, useContext, useEffect, useState } from 'react';
 
 type FormikValues = {
     adminKey: string;
@@ -11,7 +10,7 @@ type FormikValues = {
 /**
  * KeyTrap component used to ask and check if the user has the admin key to access the site
  */
-const KeyTrap: React.FC = () => {
+export default function KeyTrap(): ReactNode {
     const { setAdminKey } = useContext(TenantContext);
     const [previousKey, setPreviousKey] = useState('');
 
@@ -47,5 +46,3 @@ const KeyTrap: React.FC = () => {
         </div>
     );
 };
-
-export default KeyTrap;

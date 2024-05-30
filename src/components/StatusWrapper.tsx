@@ -32,9 +32,12 @@ export default function StatusWrapper({ query, children, allowIdle = false, noBl
             <ErrorMessage error={query.error?.data ?? JSON.stringify(query.error)} />
         </div>
     } else {
-        return <div className='flex gap-4 h-full w-full justify-center items-center'>
-            <Spinner />
-            <p>Carregant {query.endpointName} {query.status}</p>
+        return <div className='flex flex-col gap-1 h-full w-full justify-center items-center'>
+            <div className='flex gap-4 justify-center items-center'>
+                <Spinner />
+                <p>Carregant</p>
+            </div>
+            {process.env.NODE_ENV === 'development' && <p className='text-xs text-gray-400'>Executant {query.endpointName}</p>}
         </div>
     }
 }
