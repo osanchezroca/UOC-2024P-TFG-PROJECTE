@@ -1,6 +1,6 @@
-import SiteEvents from "./SiteEvents";
-import SiteEventsForm from "./SiteEventsForm";
-import SiteTenantForm from "./SiteTenantForm";
+import SiteEvents from "../../../../../modules/site-event/SiteEvents";
+import SiteEventsForm from "../../../../../modules/site-event/SiteEventsForm";
+import SiteTenantForm from "../../../../../modules/site-tenant/SiteTenantForm";
 
 export default function SettingsPage() {
 
