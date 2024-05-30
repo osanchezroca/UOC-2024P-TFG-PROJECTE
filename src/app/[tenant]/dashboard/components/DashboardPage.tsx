@@ -1,10 +1,10 @@
 'use client'
 import { TenantContext } from "@src/contexts/TenantContext";
 import { useGetDashboardReportsQuery } from '@src/libraries/endpoints/report';
-import ReportList from '@src/modules/report/ReportList';
 import StatusList from '@src/modules/report/status/StatusList';
 import { useContext, useState } from "react";
 import ReportPanel from './PanelReport';
+import ReportList from "./ReportList";
 import ReportsMap from './ReportsMap';
 
 export default function DashboardPage() {
@@ -46,7 +46,7 @@ export default function DashboardPage() {
               : <ReportsMap selectedReport={selectedReport} onCLickReport={handleSelectReport} />
           }
         </div>
-        {selectedReport ? <div style={{ maxHeight: '60%' }}>
+        {selectedReport ? <div style={{ maxHeight: '60%', minHeight: '300px' }}>
           <ReportPanel report_id={selectedReport} />
         </div> : null}
       </div>
