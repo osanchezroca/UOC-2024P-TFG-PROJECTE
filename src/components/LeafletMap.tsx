@@ -8,7 +8,7 @@ import { MapContainer, TileLayer } from "react-leaflet"
 export type MapProps = {
     position: [number, number],
     zoom: number,
-    children?: (l) => ReactNode,
+    children?: ReactNode | ((l) => ReactNode),
     scrollWheelZoom?: boolean,
     dragging?: boolean,
     zoomControl?: boolean
@@ -20,6 +20,6 @@ export default function LeafletMap({ position, zoom, children, scrollWheelZoom =
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {children(Leaflet)}
+        {children && (typeof children === 'function' ? children(Leaflet) : children)}
     </MapContainer>
 }

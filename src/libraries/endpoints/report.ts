@@ -1,4 +1,4 @@
-import { ReportType } from '../prisma-types'
+import { ReportLogType, ReportType } from '../prisma-types'
 import { publicAPI } from '../public-api'
 
 const extendedAPI = publicAPI.injectEndpoints({
@@ -23,10 +23,22 @@ const extendedAPI = publicAPI.injectEndpoints({
       providesTags: ['SiteStatus'],
       query: () => `dashboard/status`,
     }),
+    getReportLog: builder.query<ReportLogType[], string>({
+      providesTags: ['ReportLog'],
+      query: (reportId) => `dashboard/report/${reportId}/log`,
+    }),
     createReport: builder.mutation<any, any>({
       invalidatesTags: ['Report'],
       query: (body) => ({
         url: `public/report`,
+        method: 'POST',
+        body,
+      }),
+    }),
+    createReportLog: builder.mutation<any, any>({
+      invalidatesTags: ['ReportLog'],
+      query: (body) => ({
+        url: `dashboard/report/${body.report_id}/log`,
         method: 'POST',
         body,
       }),
@@ -40,5 +52,7 @@ export const {
   useGetPublicReportsQuery,
   useGetPublicReportQuery,
   useGetStatusQuery,
-  useCreateReportMutation
+  useGetReportLogQuery,
+  useCreateReportMutation,
+  useCreateReportLogMutation
 } = extendedAPI

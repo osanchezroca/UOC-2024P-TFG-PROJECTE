@@ -8,6 +8,7 @@ type Params = {
 export async function GET(request: Request, { params: { report_id } }: Params) {
     try {
         const tenant = await getTenantFromPathname(request)
+        if (!tenant.isAdmin) throw new Error('Unauthorized')
         const report = await getReport(tenant.id, report_id)
         if (!report) throw new Error('Report not found')
         return Response.json(report)

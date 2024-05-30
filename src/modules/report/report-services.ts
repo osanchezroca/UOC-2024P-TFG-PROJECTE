@@ -1,18 +1,6 @@
 import { Prisma } from "@src/libraries/database";
 
-export const getReports = async (site_tenant_id: string) => {
-    const database = Prisma
-    return await database.report.findMany({
-        include: {
-            report_status: true,
-            site_events: true,
-            report_log: true
-        },
-        where: {
-            site_tenant_id: site_tenant_id
-        }
-    })
-}
+//PUBLIC
 
 export const getPublicReports = async (site_tenant_id: string, client_id: string) => {
     const database = Prisma
@@ -44,6 +32,22 @@ export const getPublicReport = async (site_tenant_id: string, client_id: string,
     })
 }
 
+//DASHBOARD
+
+export const getReports = async (site_tenant_id: string) => {
+    const database = Prisma
+    return await database.report.findMany({
+        include: {
+            report_status: true,
+            site_events: true,
+            report_log: true
+        },
+        where: {
+            site_tenant_id: site_tenant_id
+        }
+    })
+}
+
 export const getReport = async (site_tenant_id: string, report_id: string,) => {
     const database = Prisma
     return await database.report.findFirst({
@@ -57,6 +61,7 @@ export const getReport = async (site_tenant_id: string, report_id: string,) => {
         }
     })
 }
+
 
 export const createReport = async (site_tenant_id: string, client_id: string, data: any) => {
     const database = Prisma
@@ -73,4 +78,4 @@ export const createReport = async (site_tenant_id: string, client_id: string, da
             status_id: incomingReportStatus?.id
         }
     })
-} 
+}

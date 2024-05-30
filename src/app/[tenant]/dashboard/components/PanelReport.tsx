@@ -5,8 +5,8 @@ import StatusWrapper from '@src/components/StatusWrapper';
 import SelectStatus from '@src/components/inputs/SelectStatus';
 import { useGetDashboardReportQuery } from '@src/libraries/endpoints/report';
 import ReportAttachments from '@src/modules/report/ReportAttachments';
+import ReportLog from '../../../../modules/report/log/LogList';
 import ReportInfo from './PanelInfo';
-import ReportLog from './ReportLog';
 
 type Props = {
     report_id: string
