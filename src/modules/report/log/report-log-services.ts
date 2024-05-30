@@ -1,4 +1,5 @@
 import { Prisma } from "@src/libraries/database";
+import { prepareFields } from '@src/libraries/utils';
 
 export const getReportLogs = async (site_tenant_id: string, report_id: string) => {
     const database = Prisma
@@ -17,10 +18,10 @@ export const getReportLogs = async (site_tenant_id: string, report_id: string) =
 
 export const createReportLog = async (report_id: string, message: string) => {
     const database = Prisma
+    const payload = prepareFields({ report_id, message }, ['report_id', 'message'])
     return await database.report_log.create({
         data: {
-            message,
-            report_id,
+            ...payload
         }
     })
 }

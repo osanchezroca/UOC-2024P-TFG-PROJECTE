@@ -1,4 +1,5 @@
-import { Prisma } from "@src/libraries/database"
+import { prepareFields } from '@src/libraries/utils';
+import { Prisma } from './../../libraries/database';
 
 /**
  * Return the tenant from the database
@@ -53,4 +54,17 @@ export const getTenantFromPathname = async (request: Request, returnKey: boolean
 export const checkAdminKey = (request: Request, admin_key: string): boolean => {
     const adminKey = request.headers.get('admin-key')
     return String(adminKey) == String(admin_key)
+}
+
+export const updateTenant = async (tenant_id: string, data: any) => {
+    const database = Prisma
+    const payload = prepareFields(data, ['name', 'initial_latitude', 'initial_longitude', 'initial_zoom', 'hour_opening', 'hour_closing', 'code'])
+    return await database.site_tenant.update({
+        where: {
+            id: tenant_id
+        },
+        data: {
+            ...payload
+        }
+    })
 }
