@@ -3,7 +3,7 @@
 import Button from '@src/components/Button';
 import StatusWrapper from '@src/components/StatusWrapper';
 import SelectStatus from '@src/components/inputs/SelectStatus';
-import { useGetDashboardReportQuery } from '@src/libraries/endpoints/report';
+import { useGetDashboardReportQuery, useUpdateReportMutation } from '@src/libraries/endpoints/report';
 import ReportAttachments from '@src/modules/report/ReportAttachments';
 import ReportLog from '../../../../modules/report/log/LogList';
 import ReportInfo from './PanelInfo';
@@ -16,8 +16,19 @@ export default function PanelReport({ report_id }: Props) {
     const reportQuery = useGetDashboardReportQuery(report_id);
     const report = reportQuery.data;
 
-    const handleOnChangeStatus = (value: any) => {
-        console.log(value)
+    const [updateReport, updateReportQuery] = useUpdateReportMutation()
+
+    const handleOnChangeStatus = async (value: any) => {
+        await updateReport({
+            report_id,
+            status_id: value.value
+        })
+    }
+    const handleOnArchive = async (value: any) => {
+        await updateReport({
+            report_id,
+            archived_at: report.archived_at ? null : new Date().toISOString()
+        })
     }
 
     return <div className='bg-slate-100 rounded-md shadow-md border-2 h-full' >
@@ -27,7 +38,7 @@ export default function PanelReport({ report_id }: Props) {
                     <div className='flex flex-col'>
                         <ReportInfo item={report} />
                         <SelectStatus onChange={handleOnChangeStatus} selected={report.status_id} />
-                        <Button> Arxivar</Button>
+                        <Button onClick={handleOnArchive} isActive={report.archived_at}> {report.archived_at ? 'Desarxivar' : 'Arxivar'}</Button>
                     </div>
                     <div className='flex flex-col overflow-y-auto'>
                         <ReportAttachments report_id={report.id} />

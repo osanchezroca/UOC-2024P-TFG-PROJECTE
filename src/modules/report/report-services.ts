@@ -12,6 +12,9 @@ export const getPublicReports = async (site_tenant_id: string, client_id: string
         where: {
             client_id: client_id,
             site_tenant_id: site_tenant_id
+        },
+        orderBy: {
+            created_at: 'desc'
         }
     })
 }
@@ -44,6 +47,9 @@ export const getReports = async (site_tenant_id: string) => {
         },
         where: {
             site_tenant_id: site_tenant_id
+        },
+        orderBy: {
+            created_at: 'desc'
         }
     })
 }
@@ -76,6 +82,18 @@ export const createReport = async (site_tenant_id: string, client_id: string, da
             site_tenant_id: site_tenant_id,
             client_id: client_id,
             status_id: incomingReportStatus?.id
+        }
+    })
+}
+
+export const updateReport = async (site_tenant_id: string, report_id: string, data: any) => {
+    const database = Prisma
+    return await database.report.update({
+        where: {
+            id: report_id
+        },
+        data: {
+            ...data
         }
     })
 }

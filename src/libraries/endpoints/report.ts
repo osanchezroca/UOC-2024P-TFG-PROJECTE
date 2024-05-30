@@ -43,6 +43,14 @@ const extendedAPI = publicAPI.injectEndpoints({
         body,
       }),
     }),
+    updateReport: builder.mutation<any, any>({
+      invalidatesTags: ['Report'],
+      query: (body) => ({
+        url: `dashboard/report/${body.report_id}`,
+        method: 'PUT',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -54,5 +62,6 @@ export const {
   useGetStatusQuery,
   useGetReportLogQuery,
   useCreateReportMutation,
-  useCreateReportLogMutation
+  useCreateReportLogMutation,
+  useUpdateReportMutation
 } = extendedAPI

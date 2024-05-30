@@ -10,6 +10,7 @@ type Props = {
 export default function ReportItem({ item, onClick, isSelected = false }: Props) {
     const statusStyle: CSSProperties = {
         backgroundColor: `${item.report_status?.color}`,
+        filter: item.archived_at ? 'grayscale(0.8)' : 'none'
     }
     const statusTextStyle: CSSProperties = {
         mixBlendMode: 'multiply'
