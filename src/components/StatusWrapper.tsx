@@ -37,7 +37,7 @@ export default function StatusWrapper({ query, children, allowIdle = false, noBl
                 <Spinner />
                 <p>Carregant</p>
             </div>
-            {process.env.NODE_ENV === 'development' && <p className='text-xs text-gray-400'>Executant {query.endpointName}</p>}
+            {process.env.NODE_ENV === 'development' && <p className='text-xs text-gray-600'>Executant {query.endpointName}</p>}
         </div>
     }
 }

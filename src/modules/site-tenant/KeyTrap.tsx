@@ -16,7 +16,6 @@ export default function KeyTrap(): ReactNode {
 
     const localStorageAdminKey = localStorage.getItem('admin-key');
 
-
     const handleSubmit = (values: FormikValues) => {
         setAdminKey(values.adminKey);
     };

@@ -6,7 +6,18 @@ const extendedAPI = publicAPI.injectEndpoints({
       providesTags: ['Tenant'],
       query: () => `tenant`,
     }),
+    updateTenant: builder.mutation<any, any>({
+      invalidatesTags: ['Tenant'],
+      query: (body) => ({
+        url: `tenant`,
+        method: 'PUT',
+        body,
+      }),
+    })
   }),
 })
 
-export const { useGetTenantQuery } = extendedAPI
+export const {
+  useGetTenantQuery,
+  useUpdateTenantMutation
+} = extendedAPI

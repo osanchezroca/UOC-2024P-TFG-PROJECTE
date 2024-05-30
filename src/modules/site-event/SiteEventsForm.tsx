@@ -6,11 +6,7 @@ import { Field, Form, Formik } from "formik";
 export default function SiteEventsForm() {
     const [createEvent, createEventQuery] = useCreateEventMutation()
     const handleSubmit = async (values: any) => {
-        try {
-            await createEvent(values)
-        } catch (e: any) {
-            console.error(e)
-        }
+        await createEvent(values)
     }
     const initialValues = {
         icon: '🟩',
@@ -26,13 +22,13 @@ export default function SiteEventsForm() {
                                 <label htmlFor="icon">Icona</label>
                                 <Field type="text" name="icon" list="emojis" className="border rounded p-2" />
                                 <datalist id="emojis">
-                                    <option value="✨">✨ estrellas</option>
-                                    <option value="🟩">🟩 cuadrado verde</option>
-                                    <option value="🟦">🟦 cuadrado azul</option>
-                                    <option value="🟪">🟪 cuadrado morado</option>
-                                    <option value="🟨">🟨 cuadrado amarillo</option>
-                                    <option value="🟧">🟧 cuadrado naranja</option>
-                                    <option value="🟥">🟥 cuadrado rojo</option>
+                                    <option value="✨">✨ estrelles</option>
+                                    <option value="🟩">🟩 cuadrat verd</option>
+                                    <option value="🟦">🟦 cuadrat blau</option>
+                                    <option value="🟪">🟪 cuadrat lila</option>
+                                    <option value="🟨">🟨 cuadrat groc</option>
+                                    <option value="🟧">🟧 cuadrat taronja</option>
+                                    <option value="🟥">🟥 cuadrat vermell</option>
                                 </datalist>
                             </div>
                             <div className="flex flex-col">
