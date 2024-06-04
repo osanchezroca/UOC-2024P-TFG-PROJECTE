@@ -26,6 +26,7 @@ export default function SiteTenantForm() {
         const date = new Date(origin)
         date.setHours(parseInt(hours))
         date.setMinutes(parseInt(minutes))
+        date.setSeconds(0)
         return date.toISOString()
     }
     const getTimezoneFromISO = (iso: string) => {
