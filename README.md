@@ -149,19 +149,19 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- ROADMAP -->
 ## Roadmap
-- [ ] Public base
+- [x] Public base
     - [x] Report list
     - [x] Report detail
     - [x] Report create
     - [x] Report attachment management
-- [ ] Dashboard base
+- [x] Dashboard base
     - [x] Add report to map (pointer)
     - [x] Report detail
     - [x] Access only with admin key
     - [x] Report modify
     - [x] Site config management
 - [ ] Testing
-    - [ ] Check what if location does not work or is not enabled
+    - [x] Check what if location does not work or is not enabled
     - [ ] Check admin fence
     - [ ] Report propvided by known persons
 - [ ] Extra improvements:

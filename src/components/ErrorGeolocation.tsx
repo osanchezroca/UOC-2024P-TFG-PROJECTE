@@ -14,6 +14,7 @@ export function ErrorGeolocation({ error }: ErrorProps) {
                 <div className='flex flex-col justify-center items-start gap-2'>
                     <p>Per poder utilitzar l'aplicació, ha de permetre la geolocalització per aquesta aplicació.</p>
                     <p className='font-bold'>Es sol·licitarà de nou el permís en recarregar la pàgina.</p>
+                    <p className='font-bold'>Depenent el dispositiu o navegador web, pot requerir-se activar des-de la configuració.</p>
                     <pre className='break-words overflow-auto'>{error}</pre>
                 </div>
             </div>
