@@ -159,7 +159,7 @@ This is an example of how to list things you need to use the software and how to
     - [x] Report detail
     - [x] Access only with admin key
     - [x] Report modify
-    - [ ] Site config management
+    - [x] Site config management
 - [ ] Testing
     - [ ] Check what if location does not work or is not enabled
     - [ ] Check admin fence
