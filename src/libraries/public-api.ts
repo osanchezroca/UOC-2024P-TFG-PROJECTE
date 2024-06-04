@@ -25,5 +25,5 @@ export const publicAPI = createApi({
     }
   }),
   endpoints: (builder) => ({}),
-  tagTypes: ['Report', 'Event', 'Client', 'Tenant', 'SiteStatus', 'ReportLog']
+  tagTypes: ['Report', 'Event', 'Client', 'Tenant', 'SiteStatus', 'ReportLog', 'Attachment']
 })

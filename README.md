@@ -153,7 +153,7 @@ This is an example of how to list things you need to use the software and how to
     - [x] Report list
     - [x] Report detail
     - [x] Report create
-    - [ ] Report attachment management
+    - [x] Report attachment management
 - [ ] Dashboard base
     - [x] Add report to map (pointer)
     - [x] Report detail
@@ -165,6 +165,7 @@ This is an example of how to list things you need to use the software and how to
     - [ ] Check admin fence
     - [ ] Report propvided by known persons
 - [ ] Extra improvements:
+    - [ ] Use NextResponse instead Response
     - [ ] Create end-to-end test 
     - [ ] Use websockets to refresh live
     - [ ] Multi-language Support

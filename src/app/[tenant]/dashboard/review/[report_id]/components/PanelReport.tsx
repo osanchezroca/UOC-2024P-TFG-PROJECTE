@@ -5,6 +5,7 @@ import CardComponent from '@src/components/CardComponent';
 import StatusWrapper from '@src/components/StatusWrapper';
 import SelectStatus from '@src/components/inputs/SelectStatus';
 import { useGetReportQuery, useUpdateReportMutation } from '@src/libraries/endpoints/report';
+import ReportAttachmentUpload from '@src/modules/report/ReportAttachmentUpload';
 import ReportAttachments from '@src/modules/report/ReportAttachments';
 import LogList from '@src/modules/report/log/LogList';
 import PanelInfo from './PanelInfo';
@@ -46,7 +47,8 @@ export default function PanelReport({ report_id }: Props) {
                         </CardComponent>
                     </div>
                     <CardComponent className='flex flex-col overflow-y-auto'>
-                        <ReportAttachments report_id={report.id} />
+                        <ReportAttachments report_id={report.id} allowDelete />
+                        <ReportAttachmentUpload report_id={report.id} />
                     </CardComponent>
                     <CardComponent className='flex flex-col overflow-y-auto'>
                         <LogList report_id={report.id} />
