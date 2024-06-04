@@ -73,7 +73,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://uoc-2024-p-tfg-projecte.vercel.app/)
+[![TFG Screen Shot][product-screenshot]](https://uoc-2024-p-tfg-projecte.vercel.app/)
 
 The final thesis is based on creating a tool that uses current geolocation technologies. For this reason I propose to develop a system that allows reporting events through a web application obtaining the device’s browser geolocation where is running the application.
 
