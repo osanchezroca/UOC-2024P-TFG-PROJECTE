@@ -162,7 +162,7 @@ This is an example of how to list things you need to use the software and how to
     - [x] Site config management
 - [ ] Testing
     - [x] Check what if location does not work or is not enabled
-    - [ ] Check admin fence
+    - [x] Check admin fence
     - [ ] Report propvided by known persons
 - [ ] Extra improvements:
     - [ ] Use NextResponse instead Response

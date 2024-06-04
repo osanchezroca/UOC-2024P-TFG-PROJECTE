@@ -1,4 +1,4 @@
-import LandingPage from '@src/app/[tenant]/(public-app)/components/LandingPage';
+import LandingPage from '@src/app/components/LandingPage';
 
 export default function Home() {
 
