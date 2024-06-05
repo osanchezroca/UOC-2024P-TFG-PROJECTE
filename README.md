@@ -122,7 +122,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/osanchezroca/UOC-2024P-TFG-PROJECTE.git
    ```
 2. Install NPM packages
    ```sh
@@ -130,8 +130,9 @@ This is an example of how to list things you need to use the software and how to
    ```
 3. Set environment vars
     ```env
-    POSTGRES_PRISMA_URL=""
-    POSTGRES_URL_NON_POOLING=""
+    POSTGRES_PRISMA_URL="postgres://postgres:password@host:port/database?schema=public&sslmode=require&pgbouncer=true&connect_timeout=15"
+    POSTGRES_URL_NON_POOLING="postgres://postgres:password@host:port/database?schema=public&sslmode=require"
+    BLOB_READ_WRITE_TOKEN=""
     ```
 4. Create and seed database
     ```
