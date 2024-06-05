@@ -15,10 +15,9 @@ const extendedAPI = publicAPI.injectEndpoints({
       invalidatesTags: ['Event'],
     }),
     deleteEvent: builder.mutation<any, any>({
-      query: (body) => ({
-        url: `event/${body.id}`,
+      query: (event_id) => ({
+        url: `event/${event_id}`,
         method: 'DELETE',
-        body,
       }),
       invalidatesTags: ['Event'],
     }),

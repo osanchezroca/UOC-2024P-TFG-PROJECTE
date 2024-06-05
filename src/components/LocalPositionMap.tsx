@@ -17,7 +17,7 @@ function LocalPointer({ children, latitude, longitude, flyTo = false }: LocalPoi
     useEffect(() => {
         if (flyTo) {
             if (map && latitude && longitude) {
-                map.flyTo([latitude, longitude], 13);
+                map.flyTo([latitude, longitude], 18);
             }
         }
     }, [map, latitude, longitude]);
@@ -30,7 +30,7 @@ export default function LocalPositionMap() {
     if (errorMessage) return <ErrorGeolocation error={errorMessage} />
 
     //use current position from geoContext
-    return latitude && longitude ? <DynamicMap position={[latitude, longitude]} zoom={13} >
+    return latitude && longitude ? <DynamicMap position={[latitude, longitude]} zoom={18} >
         {({ Marker, Popup }) => <LocalPointer latitude={latitude} longitude={longitude}>
             <Marker position={[latitude, longitude]}>
                 <Popup>

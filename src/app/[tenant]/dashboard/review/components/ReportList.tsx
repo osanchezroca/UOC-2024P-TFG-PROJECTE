@@ -32,19 +32,22 @@ export default function ReportList() {
 
     const filteredReports = data?.filter((item: any) => showArchived ? true : !item.archived_at)
 
-    return <StatusWrapper query={reportsQuery}>
-        {filteredReports?.length ? filteredReports.map((item: any) =>
-            <BarItemReport key={item.id} isSelected={report_id === item.id} item={item} onClick={() => handleClickReport(item.id)} />
-        ) : (
-            <p>No events</p>
-        )}
-        <div className="grow flex flex-col justify-end">
+    return <>
+        <div className='flex flex-col gap-1 relative overflow-y-auto grow'><StatusWrapper query={reportsQuery}>
+            {filteredReports?.length ? filteredReports.map((item: any) =>
+                <BarItemReport key={item.id} isSelected={report_id === item.id} item={item} onClick={() => handleClickReport(item.id)} />
+            ) : (
+                <p>No events</p>
+            )}
+        </StatusWrapper>
+        </div>
+        <div className="flex flex-col justify-end">
             <label>
                 <div className="flex justify-center space-x-2 cursor-pointer">
                     <input name="archived" type='checkbox' onChange={handleCheckArchived} checked={showArchived} />
-                    <p>Show archived</p>
+                    <p>Mostrar incidències arxivades</p>
                 </div>
             </label>
         </div>
-    </StatusWrapper>
+    </>
 }

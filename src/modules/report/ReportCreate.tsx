@@ -82,9 +82,9 @@ export default function ReportCreate() {
                     <StatusWrapper query={createReportQuery} allowIdle noBlock>
                         <StatusWrapper query={uploadAttachmentQuery} allowIdle noBlock>
                             <div className="flex flex-col justify-center gap-2">
-                                <p>Coordenades: {latitude || '...'}, {longitude || '...'}</p>
-                                <p>Data de l'esdeveniment: {datetime.toLocaleString()}</p>
-                                <Heading>Esdeveniment</Heading>
+                                <p className="text-xs">Coordenades: {latitude || '...'}, {longitude || '...'}</p>
+                                <p className="text-xs">Data de l'esdeveniment: {datetime.toLocaleString()}</p>
+                                <Heading>Tipus d'esdeveniment</Heading>
                                 {formik.errors.event && <p className="text-red-500">{formik.errors['event'] as string}</p>}
                                 <EventSelector name='event' />
                                 <Heading>Recursos multimèdia</Heading>

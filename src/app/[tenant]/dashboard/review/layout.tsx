@@ -11,9 +11,7 @@ export default function ReviewLayout({ children }) {
   return (
     <div className="grid grid-cols-5 overflow-y-auto grow">
       <div className="flex flex-col gap-2 p-2" style={{ maxHeight: 'calc(100vh - 58px)' }}>
-        <div className='flex flex-col gap-1 relative overflow-y-auto grow'>
-          <ReportList />
-        </div>
+        <ReportList />
         <div className='flex flex-col gap-1'>
           <StatusList />
         </div>

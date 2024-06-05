@@ -10,7 +10,7 @@ export default function ReportsMapPointers({ pointers, selectedReport, onCLickRe
         if (selectedReport) {
             const report = pointers.find(report => report.id === selectedReport)
             if (report) {
-                map.flyTo([report.latitude, report.longitude], 18, { duration: 2 })
+                map.flyTo([report.latitude, report.longitude], 16, { duration: 2 })
             }
         }
         map.invalidateSize()

@@ -36,7 +36,7 @@ export default function KeyTrap(): ReactNode {
                     <Form>
                         <div className='flex flex-col gap-2'>
                             <p>Introduir clau d'accés</p>
-                            <Field className='border' type="text" name='adminKey' />
+                            <Field className='border' type="password" name='adminKey' />
                             <Button type='submit'>Accedir</Button>
                         </div>
                     </Form>
