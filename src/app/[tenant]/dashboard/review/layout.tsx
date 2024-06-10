@@ -20,7 +20,7 @@ export default function ReviewLayout({ children }) {
         </CardComponent>
       </div>
       <div className="col-span-4 flex flex-col h-full gap-3 pe-3 py-3">
-        <CardComponent className='grow p-0 overflow-auto'>
+        <CardComponent className='grow py-0 px-0 overflow-auto'>
           <ReportsMap />
         </CardComponent>
         {children}
