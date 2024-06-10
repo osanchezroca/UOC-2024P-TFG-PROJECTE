@@ -162,10 +162,10 @@ Prisma push will create database structure, then seed command will fill database
     - [x] Access only with admin key
     - [x] Report modify
     - [x] Site config management
-- [ ] Testing
+- [x] Testing
     - [x] Check what if location does not work or is not enabled
     - [x] Check admin fence
-    - [ ] Report propvided by known persons
+    - [x] Report propvided by known persons
 - [ ] Extra improvements:
     - [ ] Use NextResponse instead Response
     - [ ] Create end-to-end test 
