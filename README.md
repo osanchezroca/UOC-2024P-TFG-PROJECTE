@@ -141,6 +141,9 @@ To get a local copy up and running follow these simple example steps.
     ```sh
     npm run dev
     ```
+Prisma push will create database structure, then seed command will fill database with demo data.
+
+![Database diagram][database-diagram]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -241,6 +244,7 @@ Project Link: [https://github.com/osanchezroca/UOC-2024P-TFG-PROJECTE](https://g
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/product-landing-page.png
+[database-diagram]: images/db-diagram.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [tailwindcss]: https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss 

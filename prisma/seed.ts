@@ -10,7 +10,7 @@ async function main() {
             where: { code: 'default' },
             update: {},
             create: {
-                name: "Default",
+                name: "Demo instance",
                 code: "default",
                 admin_key: 'demo',
                 initial_latitude: 41.087901921736474,
