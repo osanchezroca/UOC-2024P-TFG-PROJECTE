@@ -13,9 +13,9 @@ export default function BottomMenu() {
     const reportsQuery = useGetReportsQuery()
     const reports = reportsQuery.data
 
-    return <div className="flex flex-col justify-center space-y-2 bg-slate-500 p-2">
-        <Button disabled={geoContext.errorMessage || !geoContext.latitude || !geoContext.longitude} className="bg-orange-600 hover:bg-orange-700" href={`/${tenant.code}/reports/make`}>Reportar</Button>
-        <Button className="bg-orange-600 hover:bg-orange-700" href={`/${tenant.code}/reports`}>
+    return <div className="flex flex-col justify-center space-y-3 bg-gray-50 p-3 border shadow-lg rounded-xl -mt-1" style={{ zIndex: 1000 }}>
+        <Button color="orange" disabled={geoContext.errorMessage || !geoContext.latitude || !geoContext.longitude} href={`/${tenant.code}/reports/make`}>Reportar</Button>
+        <Button color="orange" href={`/${tenant.code}/reports`}>
             <StatusWrapper query={reportsQuery}>
                 <div className="flex gap-2 justify-center">
                     <div className="bg-orange-400 rounded px-2">{reports?.length || 0}</div>

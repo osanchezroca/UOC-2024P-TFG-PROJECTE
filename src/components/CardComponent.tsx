@@ -8,7 +8,7 @@ type Props = {
  * @returns 
  */
 export default function CardComponent(props: Props) {
-    return <div className={`bg-slate-100 rounded-md p-3 border border-black border-solid flex flex-col jusitfy-stretch gap-2 max-w-full${props.className ? ` ${props.className}` : null}`}>
+    return <div className={`bg-gray-100 rounded-md p-3 shadow-md flex flex-col jusitfy-stretch gap-2 max-w-full${props.className ? ` ${props.className}` : null}`}>
         {props.children}
     </div>
 }

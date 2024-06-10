@@ -15,7 +15,7 @@ export default function HomePage() {
             <div className="grow flex flex-col min-h-20">
                 <LocalPositionMap />
             </div>
-            <div className="relative overflow-auto">
+            <div className="relative overflow-auto bg-gray-100 p-3 border shadow-lg rounded-xl -mt-1" style={{ zIndex: 1000 }}>
                 <ReportCreate />
             </div>
         </div>

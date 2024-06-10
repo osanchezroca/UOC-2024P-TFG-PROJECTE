@@ -1,6 +1,4 @@
 'use client'
-import { faFile } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@src/components/Button";
 import Heading from '@src/components/Heading';
 import StatusWrapper from "@src/components/StatusWrapper";
@@ -52,7 +50,7 @@ export default function ReportCreate() {
     }, []);
 
     return !routing && (latitude && longitude) ? (
-        <div className="flex flex-col justify-center space-y-2 bg-slate-200 p-2">
+        <div className="flex flex-col justify-center space-y-2">
             <Formik
                 onSubmit={handleSubmit}
                 initialValues={{
@@ -81,16 +79,13 @@ export default function ReportCreate() {
                 {formik => <Form>
                     <StatusWrapper query={createReportQuery} allowIdle noBlock>
                         <StatusWrapper query={uploadAttachmentQuery} allowIdle noBlock>
-                            <div className="flex flex-col justify-center gap-2">
-                                <p className="text-xs">Coordenades: {latitude || '...'}, {longitude || '...'}</p>
-                                <p className="text-xs">Data de l'esdeveniment: {datetime.toLocaleString()}</p>
+                            <div className="flex flex-col justify-center gap-3">
                                 <Heading>Tipus d'esdeveniment</Heading>
                                 {formik.errors.event && <p className="text-red-500">{formik.errors['event'] as string}</p>}
                                 <EventSelector name='event' />
                                 <Heading>Recursos multimèdia</Heading>
                                 {formik.errors.resources && <p className="text-red-500">{formik.errors['resources'] as string}</p>}
-                                <div className={`flex items-baseline space-x-3 bg-slate-300 rounded-lg border-dashed border-4 border-slate-400 p-3${formik.errors.resources ? ' border-red-800 bg-red-300' : ''}`} >
-                                    <FontAwesomeIcon icon={faFile} size="lg" />
+                                <div className={`flex items-baseline space-x-3 bg-gray-300 break-words overflow-hidden rounded-lg border-dashed border-2 border-gray-400 p-3${formik.errors.resources ? ' border-red-800 bg-red-300' : ''}`} >
                                     <input
                                         type='file'
                                         multiple
@@ -99,7 +94,11 @@ export default function ReportCreate() {
                                         onChange={(e) => formik.setFieldValue('resources', e.target.files)}
                                     />
                                 </div>
-                                <Button type='submit' disabled={Object.keys(formik.errors || {}).length || formik.isSubmitting}>Notificar l'esdeveniment</Button>
+                                <Button color="orange" type='submit' disabled={Object.keys(formik.errors || {}).length || formik.isSubmitting}>Notificar l'esdeveniment</Button>
+                                <div className="flex flex-col justify-center gap-1">
+                                    <p className="text-xs">Coordenades: {latitude || '...'}, {longitude || '...'}</p>
+                                    <p className="text-xs">Data de l'esdeveniment: {datetime.toLocaleString()}</p>
+                                </div>
                             </div>
                         </StatusWrapper>
                     </StatusWrapper>

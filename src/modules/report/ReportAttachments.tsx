@@ -36,7 +36,7 @@ export default function ReportAttachments({ report_id, allowDelete = false }: Pr
                                             />
                                         </div>
                                         <div className="flex">
-                                            <Button size="sm" onClick={() => open()} className="grow px-1 py-1 text-xs bg-slate-700 hover:bg-slate-900">Veure</Button>
+                                            <Button size="sm" color="slate" onClick={() => open()} className="grow px-1 py-1 text-xs">Veure</Button>
                                             {allowDelete && <Button size="sm" onClick={async () => deleteAttachment({ route: attachment.url })} className="px-1 py-1 text-xs bg-red-700 hover:bg-red-900">&times;</Button>}
                                         </div>
                                     </div>}>

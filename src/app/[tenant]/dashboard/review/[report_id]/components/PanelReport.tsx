@@ -33,7 +33,7 @@ export default function PanelReport({ report_id }: Props) {
         })
     }
 
-    return <div className='bg-slate-100 rounded-md shadow-md border-2 h-full' >
+    return <div className='-2 h-full' >
         <StatusWrapper query={reportQuery}>
             {report &&
                 <div className='grid grid-cols-3 gap-2 w-full h-full'>

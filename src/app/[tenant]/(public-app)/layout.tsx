@@ -43,9 +43,11 @@ export default function PublicLayout({ children, }: Readonly<{ children: React.R
 
   return <ClientProvider>
     <GeoProvider>
-      <div className="flex flex-col w-full h-full justify-stretch relative">
-        <MenuAppBar />
-        {children}
+      <div className="flex items-center justify-stretch md:justify-center w-full h-full md:p-3 bg-blue-900">
+        <div className="flex flex-col w-full md:max-w-2xl h-full justify-stretch relative md:rounded-lg md:shadow-lg md:overflow-auto bg-gray-200">
+          <MenuAppBar />
+          {children}
+        </div>
       </div>
     </GeoProvider>
   </ClientProvider>

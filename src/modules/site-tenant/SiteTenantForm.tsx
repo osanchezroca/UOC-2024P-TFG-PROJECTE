@@ -83,7 +83,7 @@ export default function SiteTenantForm() {
                                 <Field type="number" min="1" max="17" step="1" name="initial_zoom" className="border rounded p-2 max-w-20" />
                             </div>
                         </div>
-                        <Button>Guardar</Button>
+                        <Button>Desar</Button>
                     </div>
                 </Form>
             </Formik>}

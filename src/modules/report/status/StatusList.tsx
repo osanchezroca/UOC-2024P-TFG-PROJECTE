@@ -1,12 +1,13 @@
 'use client'
+import Heading from '@src/components/Heading';
 import StatusWrapper from '@src/components/StatusWrapper';
 import { useGetStatusQuery } from '@src/libraries/endpoints/report';
 
 export default function StatusList() {
     const statusQuery = useGetStatusQuery()
     const status = statusQuery.data
-    return <div className="flex flex-col gap-1">
-        <p>Llegenda de colors</p>
+    return <>
+        <Heading>Llegenda de colors</Heading>
         <StatusWrapper query={statusQuery} >
             {status && status.length ? status.map((item) =>
                 <div key={item.id} className="flex align-baseline gap-2">
@@ -17,5 +18,5 @@ export default function StatusList() {
                 <p>No status</p>
             )}
         </StatusWrapper>
-    </div>
+    </>
 }
