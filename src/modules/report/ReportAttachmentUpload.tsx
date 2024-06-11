@@ -50,7 +50,7 @@ export default function ReportAttachmentUpload({ report_id }) {
                 <StatusWrapper query={uploadAttachmentQuery} allowIdle noBlock>
                     <div className="flex flex-col justify-center gap-2">
                         {formik.errors.resources && <p className="text-red-500">{formik.errors['resources'] as string}</p>}
-                        <div className={`flex items-baseline space-x-3 bg-slate-300 rounded-lg border-dashed border-4 border-slate-400 p-3${formik.errors.resources ? ' border-red-800 bg-red-300' : ''}`} >
+                        <div className={`flex items-baseline space-x-3 bg-slate-300 rounded-lg border-dashed overflow-auto border-4 border-slate-400 p-3${formik.errors.resources ? ' border-red-800 bg-red-300' : ''}`} >
                             <FontAwesomeIcon icon={faFile} size="lg" />
                             <input
                                 type='file'

@@ -11,8 +11,8 @@ export default function PanelInfo({ item }: Props) {
     }
 
     return <div className='bg-slate-100 rounded-md shadow-md border-4'>
-        <div className="grid grid-cols-5">
-            <div className="flex flex-col justify-center items-center p-3">
+        <div className="grid grid-cols-6">
+            <div className="col-span-2 flex flex-col justify-center items-center p-3">
                 <p className="text-2xl">{item.site_events?.icon}</p>
                 <p>{item.site_events?.name}</p>
             </div>
