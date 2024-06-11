@@ -9,27 +9,29 @@ datasource db {
 }
 
 model report {
-  id             String         @id(map: "report_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  client_id      String?        @db.Uuid
-  site_event_id  String?        @db.Uuid
-  created_at     DateTime       @default(now()) @db.Timestamp(6)
-  updated_at     DateTime?      @db.Timestamp(6)
-  archived_at    DateTime?      @db.Timestamp(6)
-  status_id      String?        @db.Uuid
-  site_tenant_id String         @db.Uuid
-  latitude       Float
-  longitude      Float
-  report_status  report_status? @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_report_status_id_fk")
-  site_events    site_event?    @relation(fields: [site_event_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_events_id_fk")
-  site_tenant    site_tenant    @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
-  report_log     report_log[]
+  id                String              @id(map: "report_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  client_id         String?             @db.Uuid
+  site_event_id     String?             @db.Uuid
+  created_at        DateTime            @default(now()) @db.Timestamp(6)
+  updated_at        DateTime?           @db.Timestamp(6)
+  archived_at       DateTime?           @db.Timestamp(6)
+  status_id         String?             @db.Uuid
+  site_tenant_id    String              @db.Uuid
+  latitude          Float
+  longitude         Float
+  report_status     report_status?      @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_report_status_id_fk")
+  site_events       site_event?         @relation(fields: [site_event_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_events_id_fk")
+  site_tenant       site_tenant         @relation(fields: [site_tenant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_site_tenant_id_fk")
+  report_attachment report_attachment[]
+  report_log        report_log[]
 }
 
 model report_attachment {
   id         String    @id(map: "report_attachment_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  report_id  Int
-  route      String    @db.VarChar
+  route      String    @unique(map: "report_attachment_pk_2") @db.VarChar
   created_at DateTime? @default(now()) @db.Timestamp(6)
+  report_id  String?   @db.Uuid
+  report     report?   @relation(fields: [report_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "report_attachment_report_id_fk")
 }
 
 model report_status {

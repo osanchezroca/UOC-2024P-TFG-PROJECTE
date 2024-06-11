@@ -1,4 +1,5 @@
 import { getClientFromHeader } from '@src/modules/client/client-services';
+import { deleteAttachment } from '@src/modules/report/attachment/report-attachment-services';
 import { getReport } from '@src/modules/report/report-services';
 import { getTenantFromPathname } from '@src/modules/site-tenant/site-tenant-services';
 import { del, list } from '@vercel/blob';
@@ -26,7 +27,7 @@ export async function GET(request: Request, { params: { report_id } }) {
     }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request: Request, { params: { report_id } }) {
     try {
         const tenant = await getTenantFromPathname(request)
         if (!tenant.isAdmin) throw new Error('Unauthorized')
@@ -37,6 +38,7 @@ export async function DELETE(request: Request) {
         if (!route.includes(`${tenant.id}/reports/`)) throw new Error('Invalid route')
 
         await del(route)
+        await deleteAttachment(report_id, route)
 
         return Response.json({ message: 'File deleted' })
     } catch (e: any) {
