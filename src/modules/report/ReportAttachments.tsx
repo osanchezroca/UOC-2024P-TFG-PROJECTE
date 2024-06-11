@@ -41,11 +41,11 @@ export default function ReportAttachments({ report_id, allowDelete = false }: Pr
                                             {allowDelete && <Button size="sm" onClick={async () => deleteAttachment({ route: attachment.url })} className="px-1 py-1 text-xs bg-red-700 hover:bg-red-900">&times;</Button>}
                                         </div>
                                     </div>}>
-                                    {useMemo(() => <DocViewer
+                                    <DocViewer
                                         config={{ header: { disableHeader: true } }}
                                         documents={[{ uri: attachment.url, fileName: 'attachment', fileType: 'image/png' }]}
                                         pluginRenderers={DocViewerRenderers}
-                                    />, [attachment])}
+                                    />
                                 </Modal>
                             </div>
                         )) : <p>No hi ha documents adjunts</p>}
