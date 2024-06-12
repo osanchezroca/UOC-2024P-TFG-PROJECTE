@@ -1,12 +1,11 @@
 'use client'
 
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import Button from "@src/components/Button";
 import Heading from '@src/components/Heading';
+import ImageViewer from "@src/components/ImageViewer";
 import Modal from "@src/components/Modal";
 import StatusWrapper from "@src/components/StatusWrapper";
 import { useDeleteAttachmentMutation, useGetAttachmentsQuery } from "@src/libraries/endpoints/report";
-import { useMemo } from "react";
 
 type Props = {
     report_id: any
@@ -30,22 +29,14 @@ export default function ReportAttachments({ report_id, allowDelete = false }: Pr
                                 <Modal renderButton={({ open }) =>
                                     <div className="flex flex-col justify-between items-stretch bg-slate-500 border border-slate-700 rounded-md min-h-40">
                                         <div className="grow pt-1 px-1">
-                                            {useMemo(() => <DocViewer
-                                                config={{ header: { disableHeader: true } }}
-                                                documents={[{ uri: attachment.url, fileName: 'attachment', fileType: 'image/png' }]}
-                                                pluginRenderers={DocViewerRenderers}
-                                            />, [attachment])}
+                                            <ImageViewer url={attachment.url} />
                                         </div>
                                         <div className="flex">
                                             <Button size="sm" color="slate" onClick={() => open()} className="grow px-1 py-1 text-xs">Veure</Button>
                                             {allowDelete && <Button size="sm" onClick={async () => deleteAttachment({ route: attachment.url })} className="px-1 py-1 text-xs bg-red-700 hover:bg-red-900">&times;</Button>}
                                         </div>
                                     </div>}>
-                                    <DocViewer
-                                        config={{ header: { disableHeader: true } }}
-                                        documents={[{ uri: attachment.url, fileName: 'attachment', fileType: 'image/png' }]}
-                                        pluginRenderers={DocViewerRenderers}
-                                    />
+                                    <ImageViewer url={attachment.url} />
                                 </Modal>
                             </div>
                         )) : <p>No hi ha documents adjunts</p>}
