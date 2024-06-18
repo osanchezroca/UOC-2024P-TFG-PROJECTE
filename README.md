@@ -31,7 +31,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">Plataforma de reportatge d’esdeveniments en base a la geolocalització</h3>
+  <h3 align="center">Plataforma de report d’esdeveniments en base a la geolocalització</h3>
 
   <p align="center">
     Grau d’Enginyeria Informàtica | Serveis basats en localització i espais intel·ligents 
@@ -203,7 +203,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Plataforma de reportatge d’esdeveniments en base a la geolocalització © 2024 by Oscar Sánchez Roca is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
+Plataforma de report d’esdeveniments en base a la geolocalització © 2024 by Oscar Sánchez Roca is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

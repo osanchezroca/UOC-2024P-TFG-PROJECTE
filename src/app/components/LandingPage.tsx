@@ -10,7 +10,7 @@ export default function LandingPage() {
         <div className='flex flex-col gap-10'>
             <CardComponent>
                 <div className='flex flex-col gap-3 sm:gap-5'>
-                    <h1 className='text-xl'>Plataforma de reportatge d’esdeveniments en base a la geolocalització</h1>
+                    <h1 className='text-xl'>Plataforma de report d’esdeveniments en base a la geolocalització</h1>
                     <p className='text-center'>Per accedir a l'aplicació, accedeix la la URL corresponent a la teva instància.</p>
                     <h2 className='text-lg text-center'>Accés a l'instància de proves: "default"</h2>
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-10'>
